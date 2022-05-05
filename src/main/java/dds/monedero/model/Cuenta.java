@@ -12,6 +12,7 @@ import java.util.List;
 public class Cuenta {
 
   private double saldo;
+  private double limite = 1000;
   private List<Movimiento> movimientos = new ArrayList<>();
 
   public Cuenta() {
@@ -21,6 +22,8 @@ public class Cuenta {
   public Cuenta(double montoInicial) {
     saldo = montoInicial;
   }
+
+  public void setLimite(double limite){ this.limite = limite;}
 
   public void setMovimientos(List<Movimiento> movimientos) {
     this.movimientos = movimientos;
@@ -46,7 +49,7 @@ public class Cuenta {
       throw new SaldoMenorException("No puede sacar mas de " + getSaldo() + " $");
     }
     double montoExtraidoHoy = getMontoExtraidoA(LocalDate.now());
-    double limite = 1000 - montoExtraidoHoy;
+    limite -= montoExtraidoHoy;
     if (cuanto > limite) {
       throw new MaximoExtraccionDiarioException("No puede extraer mas de $ " + 1000
           + " diarios, límite: " + limite);
