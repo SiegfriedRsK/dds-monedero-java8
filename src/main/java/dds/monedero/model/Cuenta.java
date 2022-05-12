@@ -12,22 +12,28 @@ import java.util.List;
 public class Cuenta {
 
   private double saldo;
-  private double limite = 1000;
-  private List<Movimiento> movimientos = new ArrayList<>();
+  private double limite;
+  private List<Movimiento> movimientos;
 
   public Cuenta() {
     saldo = 0;
+    limite = 1000;
+    movimientos = new ArrayList<>();
   }
 
   public Cuenta(double montoInicial) {
     saldo = montoInicial;
   }
 
-  public void setLimite(double limite){ this.limite = limite;}
+  public void setLimite(double limite) {
+    this.limite = limite;
+  }
 
-  public void setMovimientos(List<Movimiento> movimientos) {
+  // No se utilizaba setter de movimientos.
+ /* public void setMovimientos(List<Movimiento> movimientos) {
     this.movimientos = movimientos;
   }
+  */
 
   public void poner(double cuanto) {
     if (cuanto <= 0) {
